@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calculator project</title>
+    <link rel="stylesheet" type="text/css" href="css/calculator_style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="innercontainer">
+            <div class="calculator">
+                <input type="text" name="screen" value="" placeholder="0" id="screen" />
+                <table>
+                    <tr style="text-align: right">
+                        <td><button>BAC</button></td>
+                    </tr>
+                    <tr>
+                        <td><button id="cal-btn-clr">c</button></td>
+                        <td><button>%</button></td>
+                        <td><button>(</button></td>
+                        <td><button>)</button></td>
+                    </tr>
+                    <tr>
+                        <td><button>7</button></td>
+                        <td><button>8</button></td>
+                        <td><button>9</button></td>
+                        <td><button>/</button></td>
+                    </tr>
+                    <tr>
+                        <td><button>4</button></td>
+                        <td><button>5</button></td>
+                        <td><button>6</button></td>
+                        <td><button>*</button></td>
+                    </tr>
+                    <tr>
+                        <td><button id="cal-btn-one">1</button></td>
+                        <td><button id="cal-btn-two">2</button></td>
+                        <td><button>3</button></td>
+                        <td><button>-</button></td>
+                    </tr>
+                    <tr>
+                        <td><button>.</button></td>
+                        <td><button>0</button></td>
+                        <td><button>=</button></td>
+                        <td><button>+</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- <script type="text/javascript" src="index.js"></script> -->
+    <script>
+        // document.getElementById("cal-btn-one").addEventListener("click", (e) => {
+        //     let btnvalue = parseFloat(e.target.innerHTML);
+        //     console.log(typeof btnvalue);
+
+        //     let inputScreen = document.getElementById("inputScreen");
+        //     inputScreen.value = btnvalue;
+        // });
+
+        // document.getElementById("cal-btn-two").addEventListener("click", (e) => {
+        //     let btnvalue = parseFloat(e.target.innerHTML);
+        //     console.log(typeof btnvalue);
+
+        //     let inputScreen = document.getElementById("inputScreen");
+        //     inputScreen.value = btnvalue;
+        // });
+
+        // document.getElementById("cal-btn-clr").addEventListener("click", (e) => {
+        // let btnvalue = parseFloat(e.target.innerHTML);
+        // console.log(typeof btnvalue);
+
+        //     let inputScreen = document.getElementById("inputScreen");
+        //     inputScreen.value = "";
+        // });
+
+        let buttons = document.querySelectorAll("button");
+        let screen = document.getElementById("screen");
+        for (let i = 0; i < buttons.length; i++) {
+            let element = buttons[i];
+            element.addEventListener("click", function(e) {
+                // let btnText = e.target.innerText;
+                console.log(typeof screen.value);
+                switch (e.target.innerText) {
+                    case "c":
+                        screen.value = "";
+                        break;
+                    case "BAC":
+                        screen.value = screen.value.slice(0, -1);
+                        break;
+                    case "=":
+                        try {
+                            screen.value = eval(screen.value);
+                        } catch {
+                            screen.value = "error!";
+                        }
+                        break;
+                    default:
+                        screen.value = screen.value + e.target.innerText;
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
